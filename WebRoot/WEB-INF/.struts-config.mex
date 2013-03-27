@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FlowViewLayout Version="1.2">
+  <StrutsActivity path="/lazy.do" location="350,50" dimension="238,84" />
+  <StrutsActivity path="/initlazy.do" location="650,50" dimension="262,84" />
+  <StrutsActivity path="/common.do" />
+</FlowViewLayout>
+
