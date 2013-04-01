@@ -1,4 +1,4 @@
-package testGridTree.action;
+ï»¿package testGridTree.action;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,74 +15,74 @@ import org.apache.struts.action.ActionMapping;
 import testGridTree.GridTreeUtil; 
 
 /**
- * ÆÕÍ¨±í¸ñÊ÷:¼ò»¯ÁË´¦ÀíµÄ²½Öè,±ØĞëÓĞÁ½´¦Òªµ÷ÓÃGridTreeUtilÖĞµÄ·½·¨.
+ * æ™®é€šè¡¨æ ¼æ ‘:ç®€åŒ–äº†å¤„ç†çš„æ­¥éª¤,å¿…é¡»æœ‰ä¸¤å¤„è¦è°ƒç”¨GridTreeUtilä¸­çš„æ–¹æ³•.
  * connect me:419723443@qq.com
  */
 public class TableTreeAction   extends Action {
-	// Ã¿Ò³ĞĞÊı
+	// æ¯é¡µè¡Œæ•°
 	private static int DEFAULT_PAGE_SIZE = 10; 
 	  public ActionForward execute(ActionMapping mapping, ActionForm form,
 				HttpServletRequest request, HttpServletResponse response) {
 		//GridTreeDao dao = new GridTreeDao();
 		List list = new ArrayList();
-		// ½á¹ûĞĞÊı
+		// ç»“æœè¡Œæ•°
 		int totalNum = 0;
 		int[] rowStartEnd;
 		int len = 0;
 		try {
 			/*
-			//ÄãµÄÒµÎñ±ØĞëÒª×öµÄÊÂÇé:²éÑ¯µÚÒ»²ãµÄ½ÚµãµÄ×ÜÊı!!
+			//ä½ çš„ä¸šåŠ¡å¿…é¡»è¦åšçš„äº‹æƒ…:æŸ¥è¯¢ç¬¬ä¸€å±‚çš„èŠ‚ç‚¹çš„æ€»æ•°!!
 			totalNum = dao.getFirstLevelCount();			
 			
-			// ±ØĞëµ÷ÓÃ¹¤¾ßÀàµÄ·½·¨:¼ÆËãÆğÊ¼ĞĞºÍÖÕÖ¹ĞĞ.
+			// å¿…é¡»è°ƒç”¨å·¥å…·ç±»çš„æ–¹æ³•:è®¡ç®—èµ·å§‹è¡Œå’Œç»ˆæ­¢è¡Œ.
 			rowStartEnd = GridTreeUtil.getStartAndEndInfo(request, totalNum,
 					DEFAULT_PAGE_SIZE);			
 			
-			//ÄãµÄÒµÎñ±ØĞëÒª×öµÄÊÂÇé:²éÑ¯ÏÔÊ¾µÚÒ»Ò³ÏÔÊ¾³öÀ´µÄ½ÚµãÒÔ¼°×Ó½Úµã!
+			//ä½ çš„ä¸šåŠ¡å¿…é¡»è¦åšçš„äº‹æƒ…:æŸ¥è¯¢æ˜¾ç¤ºç¬¬ä¸€é¡µæ˜¾ç¤ºå‡ºæ¥çš„èŠ‚ç‚¹ä»¥åŠå­èŠ‚ç‚¹!
 			list = dao.getCommonList(rowStartEnd[0], rowStartEnd[1]);
 			
-			// ±ØĞëµ÷ÓÃ¹¤¾ßÀàµÄ·½·¨:µÃµ½json×Ö·û´®¡£
+			// å¿…é¡»è°ƒç”¨å·¥å…·ç±»çš„æ–¹æ³•:å¾—åˆ°jsonå­—ç¬¦ä¸²ã€‚
 			String jsonStr = GridTreeUtil.getJsonStr(list, request);	
 			*/
 			 	
 			
 			StringBuffer buf  =new StringBuffer();
-			//µÚÒ»²½:µÚÒ»²ãµÄ×ÜĞĞÊı.
+			//ç¬¬ä¸€æ­¥:ç¬¬ä¸€å±‚çš„æ€»è¡Œæ•°.
 			totalNum = 5;
-			//µÚ¶ş²½:ÏÔÊ¾µÄÆğÊ¼ĞĞ,ºÍ½áÊøĞĞ.
-			//ÔÚµã»÷·­Ò³°´Å¥µÄÊ±ºò,»á´«µİgtstart²ÎÊıµ½ºóÌ¨.
+			//ç¬¬äºŒæ­¥:æ˜¾ç¤ºçš„èµ·å§‹è¡Œ,å’Œç»“æŸè¡Œ.
+			//åœ¨ç‚¹å‡»ç¿»é¡µæŒ‰é’®çš„æ—¶å€™,ä¼šä¼ é€’gtstartå‚æ•°åˆ°åå°.
 			rowStartEnd = GridTreeUtil.getStartAndEndInfo(request, totalNum,
 					DEFAULT_PAGE_SIZE);	
-			//µÚÈı²½:²éÑ¯list--demoÊ¡ÂÔ.
+			//ç¬¬ä¸‰æ­¥:æŸ¥è¯¢list--demoçœç•¥.
 			
-			//µÚËÄ²½:ĞÎ³Éjson´®.------ÏÂÃæÊÇÄ£ÄâµÄjson
+			//ç¬¬å››æ­¥:å½¢æˆjsonä¸².------ä¸‹é¢æ˜¯æ¨¡æ‹Ÿçš„json
 			int n = 1;
 			if (request.getParameter("gtpage") != null)  
 				n = Integer.parseInt(request.getParameter("gtpage"));
-			String page  ="--À´×ÔµÚ"+n+"Ò³";	
+			String page  ="--æ¥è‡ªç¬¬"+n+"é¡µ";	
 			buf.append("{total:"+ request.getAttribute("gtcount") + ",page:"+ request.getAttribute("gtpage")+",");
-			buf.append(" data:[{\"disid\":\"10\",\"disparentId\":\"\",\"disname\":\"ºş±±"+page+"\"},");
-			buf.append(" {\"disid\":\"11\",\"disparentId\":\"\",\"disname\":\"±±¾©"+page+"\"},      "); 
-			buf.append(" {\"disid\":\"12\",\"disparentId\":\"\",\"disname\":\"Ìì½ò"+page+"\"},      ");
-			buf.append(" {\"disid\":\"4211\",\"disparentId\":\"10\",\"disname\":\"Îäºº"+page+"\"},"); 
-			buf.append(" {\"disid\":\"4212\",\"disparentId\":\"10\",\"disname\":\"¾£Öİ"+page+"\"},");
-			buf.append(" {\"disid\":\"4213\",\"disparentId\":\"10\",\"disname\":\"¾£ÃÅ"+page+"\"},  ");		
-			buf.append(" {\"disid\":\"4214\",\"disparentId\":\"10\",\"disname\":\"»Æ¸Ô"+page+"\"},  ");
-			buf.append(" {\"disid\":\"4215\",\"disparentId\":\"10\",\"disname\":\"¶õÖİ"+page+"\"},");
-			buf.append(" {\"disid\":\"4216\",\"disparentId\":\"10\",\"disname\":\"ÒË²ı"+page+"\"},  ");		
-			buf.append(" {\"disid\":\"4217\",\"disparentId\":\"10\",\"disname\":\"Ïå·®"+page+"\"},  ");
-			buf.append(" {\"disid\":\"4218\",\"disparentId\":\"10\",\"disname\":\"»ÆÊ¯"+page+"\"},");
-			buf.append(" {\"disid\":\"4219\",\"disparentId\":\"10\",\"disname\":\"Ê®Ñß"+page+"\"},  ");		
-			buf.append(" {\"disid\":\"4220\",\"disparentId\":\"10\",\"disname\":\"Ğ¢¸Ğ"+page+"\"},  "); 
-			buf.append(" {\"disid\":\"1101\",\"disparentId\":\"11\",\"disname\":\"±±¾©"+page+"\"},  ");		
-			buf.append(" {\"disid\":\"1201\",\"disparentId\":\"12\",\"disname\":\"Ìì½ò"+page+"\"},  ");
-			buf.append(" {\"disid\":\"1102\",\"disparentId\":\"11\",\"disname\":\"ÖĞ¹Ø´å"+page+"\"},  ");		
-			buf.append(" {\"disid\":\"1202\",\"disparentId\":\"12\",\"disname\":\"Ìì½ò¿ª·¢Çø"+page+"\"}  ");
+			buf.append(" data:[{\"disid\":\"10\",\"disparentId\":\"\",\"disname\":\"æ¹–åŒ—"+page+"\"},");
+			buf.append(" {\"disid\":\"11\",\"disparentId\":\"\",\"disname\":\"åŒ—äº¬"+page+"\"},      "); 
+			buf.append(" {\"disid\":\"12\",\"disparentId\":\"\",\"disname\":\"å¤©æ´¥"+page+"\"},      ");
+			buf.append(" {\"disid\":\"4211\",\"disparentId\":\"10\",\"disname\":\"æ­¦æ±‰"+page+"\"},"); 
+			buf.append(" {\"disid\":\"4212\",\"disparentId\":\"10\",\"disname\":\"è†å·"+page+"\"},");
+			buf.append(" {\"disid\":\"4213\",\"disparentId\":\"10\",\"disname\":\"è†é—¨"+page+"\"},  ");		
+			buf.append(" {\"disid\":\"4214\",\"disparentId\":\"10\",\"disname\":\"é»„å†ˆ"+page+"\"},  ");
+			buf.append(" {\"disid\":\"4215\",\"disparentId\":\"10\",\"disname\":\"é„‚å·"+page+"\"},");
+			buf.append(" {\"disid\":\"4216\",\"disparentId\":\"10\",\"disname\":\"å®œæ˜Œ"+page+"\"},  ");		
+			buf.append(" {\"disid\":\"4217\",\"disparentId\":\"10\",\"disname\":\"è¥„æ¨Š"+page+"\"},  ");
+			buf.append(" {\"disid\":\"4218\",\"disparentId\":\"10\",\"disname\":\"é»„çŸ³"+page+"\"},");
+			buf.append(" {\"disid\":\"4219\",\"disparentId\":\"10\",\"disname\":\"åå °"+page+"\"},  ");		
+			buf.append(" {\"disid\":\"4220\",\"disparentId\":\"10\",\"disname\":\"å­æ„Ÿ"+page+"\"},  "); 
+			buf.append(" {\"disid\":\"1101\",\"disparentId\":\"11\",\"disname\":\"åŒ—äº¬"+page+"\"},  ");		
+			buf.append(" {\"disid\":\"1201\",\"disparentId\":\"12\",\"disname\":\"å¤©æ´¥"+page+"\"},  ");
+			buf.append(" {\"disid\":\"1102\",\"disparentId\":\"11\",\"disname\":\"ä¸­å…³æ‘"+page+"\"},  ");		
+			buf.append(" {\"disid\":\"1202\",\"disparentId\":\"12\",\"disname\":\"å¤©æ´¥å¼€å‘åŒº"+page+"\"}  ");
 			buf.append("]}  ");
 
 			String jsonStr = buf.toString();
 			response.setContentType("text/html; charset=UTF-8");
-			System.out.println("json´®:" + jsonStr);
+			System.out.println("jsonä¸²:" + jsonStr);
 			PrintWriter out = response.getWriter();
 			out.println(jsonStr);
 		} catch (Exception e) {

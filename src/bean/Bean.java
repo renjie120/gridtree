@@ -1,4 +1,4 @@
-package shandong;
+package bean;
 
 public class Bean {
 	private String nodeId;

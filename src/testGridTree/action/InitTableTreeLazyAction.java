@@ -1,4 +1,4 @@
-package testGridTree.action;
+ï»¿package testGridTree.action;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -15,15 +15,15 @@ import org.apache.struts.action.ActionMapping;
 import testGridTree.GridTreeUtil;
 
 /**
- * ÑİÊ¾ÀÁ¼ÓÔØ±í¸ñÊ÷:µÚÒ»´ÎÏÔÊ¾Ö´ĞĞµÄaction,Ò²¾ÍÊÇinitLazy.
- * ÓÃÍ¾ÊÇ:Ö»²éÑ¯³öÀ´Ó¦¸ÃÏÔÊ¾µÄµÚÒ»²ãµÄ½Úµã.
+ * æ¼”ç¤ºæ‡’åŠ è½½è¡¨æ ¼æ ‘:ç¬¬ä¸€æ¬¡æ˜¾ç¤ºæ‰§è¡Œçš„action,ä¹Ÿå°±æ˜¯initLazy.
+ * ç”¨é€”æ˜¯:åªæŸ¥è¯¢å‡ºæ¥åº”è¯¥æ˜¾ç¤ºçš„ç¬¬ä¸€å±‚çš„èŠ‚ç‚¹.
  * connect me:419723443@qq.com
  */
 public class InitTableTreeLazyAction  extends Action {
-	// Ã¿Ò³ĞĞÊı
+	// æ¯é¡µè¡Œæ•°
 	private static int DEFAULT_PAGE_SIZE = 10;
 	/**
-	 * Ö´ĞĞ·½·¨.
+	 * æ‰§è¡Œæ–¹æ³•.
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -34,45 +34,45 @@ public class InitTableTreeLazyAction  extends Action {
 				HttpServletRequest request, HttpServletResponse response) {
 		//GridTreeDao dao = new GridTreeDao();
 		List list = new ArrayList();
-		// ½á¹ûĞĞÊı
+		// ç»“æœè¡Œæ•°
 		int totalNum = 0;
 		int[] rowStartEnd;
 		int len = 0;
 		try {
 			/*
 			totalNum = dao.getFirstLevelCount(); 
-			// µ÷ÓÃ¹¤¾ßÀàµÄ·½·¨¼ÆËãÆğÊ¼ĞĞºÍÖÕÖ¹ĞĞ£¨ÎªÇ°¿ªºÍºó¿ªµÄ£©¡£
+			// è°ƒç”¨å·¥å…·ç±»çš„æ–¹æ³•è®¡ç®—èµ·å§‹è¡Œå’Œç»ˆæ­¢è¡Œï¼ˆä¸ºå‰å¼€å’Œåå¼€çš„ï¼‰ã€‚
 			rowStartEnd = GridTreeUtil.getStartAndEndInfo(request, totalNum,
 					DEFAULT_PAGE_SIZE);
 			list = dao.getList(rowStartEnd[0], rowStartEnd[1]);
 
-			// µ÷ÓÃ¹¤¾ßÀàµÄ·½·¨µÃµ½json×Ö·û´®¡£
+			// è°ƒç”¨å·¥å…·ç±»çš„æ–¹æ³•å¾—åˆ°jsonå­—ç¬¦ä¸²ã€‚
 			String jsonStr = GridTreeUtil.getJsonStr(list, request);
 			*/
 			
 			
 			StringBuffer buf  =new StringBuffer();
-			//µÚÒ»²½:µÚÒ»²ãµÄ×ÜĞĞÊı.
+			//ç¬¬ä¸€æ­¥:ç¬¬ä¸€å±‚çš„æ€»è¡Œæ•°.
 			totalNum = 10;
-			//µÚ¶ş²½:ÏÔÊ¾µÄÆğÊ¼ĞĞ,ºÍ½áÊøĞĞ.
-			//ÔÚµã»÷·­Ò³°´Å¥µÄÊ±ºò,»á´«µİgtstart²ÎÊıµ½ºóÌ¨.
+			//ç¬¬äºŒæ­¥:æ˜¾ç¤ºçš„èµ·å§‹è¡Œ,å’Œç»“æŸè¡Œ.
+			//åœ¨ç‚¹å‡»ç¿»é¡µæŒ‰é’®çš„æ—¶å€™,ä¼šä¼ é€’gtstartå‚æ•°åˆ°åå°.
 			rowStartEnd = GridTreeUtil.getStartAndEndInfo(request, totalNum,
 					DEFAULT_PAGE_SIZE);	
-			//µÚÈı²½:²éÑ¯list--demoÊ¡ÂÔ.
+			//ç¬¬ä¸‰æ­¥:æŸ¥è¯¢list--demoçœç•¥.
 			
-			//µÚËÄ²½:ĞÎ³Éjson´®.------ÏÂÃæÊÇÄ£ÄâµÄjson
+			//ç¬¬å››æ­¥:å½¢æˆjsonä¸².------ä¸‹é¢æ˜¯æ¨¡æ‹Ÿçš„json
 			int n = 1;
 			if (request.getParameter("gtpage") != null)  
 				n = Integer.parseInt(request.getParameter("gtpage"));
-			String page  ="--À´×ÔµÚ"+n+"Ò³";	
+			String page  ="--æ¥è‡ªç¬¬"+n+"é¡µ";	
 			buf.append("{total:"+ request.getAttribute("gtcount") + ",page:"+ request.getAttribute("gtpage")+",");
-			buf.append(" data:[{\"disid\":\"10\",\"disparentId\":\"\",\"disname\":\"ºş±±"+page+"\",\"isLeaf\":\"1\"},"); 
-			buf.append(" {\"disid\":\"11\",\"disparentId\":\"\",\"disname\":\"¹í³Ç¿µ°ÍÊ²"+page+"\",\"isLeaf\":\"0\"},      ");	
-			buf.append(" {\"disid\":\"12\",\"disparentId\":\"\",\"disname\":\"Ìì½ò"+page+"\",\"isLeaf\":\"1\"}]} ");
+			buf.append(" data:[{\"disid\":\"10\",\"disparentId\":\"\",\"disname\":\"æ¹–åŒ—"+page+"\",\"isLeaf\":\"1\"},"); 
+			buf.append(" {\"disid\":\"11\",\"disparentId\":\"\",\"disname\":\"é¬¼åŸåº·å·´ä»€"+page+"\",\"isLeaf\":\"0\"},      ");	
+			buf.append(" {\"disid\":\"12\",\"disparentId\":\"\",\"disname\":\"å¤©æ´¥"+page+"\",\"isLeaf\":\"1\"}]} ");
 
 			String jsonStr = buf.toString();
 			response.setContentType("text/html; charset=UTF-8");
-			System.out.println("json´®:" + jsonStr);
+			System.out.println("jsonä¸²:" + jsonStr);
 			PrintWriter out = response.getWriter();
 			out.println(jsonStr); 
 		} catch (Exception e) {

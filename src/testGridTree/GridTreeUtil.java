@@ -61,12 +61,7 @@ public class GridTreeUtil {
 		else {
 			return new int[] { 1, allCount + 1 };
 		}
-	}
-
-	public static void main(String[] a) {
-		List list = new ArrayList();
-		getJsonStr(list);
-	}
+	} 
 
 	public static String getJsonStr(List list) {
 		JSONArray jsonArr = new JSONArray();

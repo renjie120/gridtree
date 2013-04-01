@@ -1,4 +1,4 @@
-package testGridTree.action;
+ï»¿package testGridTree.action;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -13,11 +13,11 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 public class TableTreeLazyPagingAction extends Action {
-	// Ã¿Ò³ĞĞÊı
+	// æ¯é¡µè¡Œæ•°
 	private static int DEFAULT_PAGE_SIZE = 10;
 
 	/**
-	 * ÀÁ¼ÓÔØµÄ±í¸ñÊ÷Ê¾Àı´úÂë.
+	 * æ‡’åŠ è½½çš„è¡¨æ ¼æ ‘ç¤ºä¾‹ä»£ç .
 	 * 
 	 * @param mapping
 	 * @param form
@@ -38,7 +38,7 @@ public class TableTreeLazyPagingAction extends Action {
 			 * GridTreeUtil.getStartAndEndInfo(request, totalNum,
 			 * DEFAULT_PAGE_SIZE); list =
 			 * dao.getListByParent(parentId,rowStartEnd[0],rowStartEnd[1]); //
-			 * µ÷ÓÃ¹¤¾ßÀàµÄ·½·¨µÃµ½json×Ö·û´®¡£ String jsonStr =
+			 * è°ƒç”¨å·¥å…·ç±»çš„æ–¹æ³•å¾—åˆ°jsonå­—ç¬¦ä¸²ã€‚ String jsonStr =
 			 * GridTreeUtil.getJsonStr(list,request);
 			 */
 
@@ -48,20 +48,20 @@ public class TableTreeLazyPagingAction extends Action {
 			int currentPage = 1;
 			if (request.getParameter("gtpage") != null)
 				n = Integer.parseInt(request.getParameter("gtpage"));
-			String page = "--À´×ÔµÚ" + n + "Ò³";
+			String page = "--æ¥è‡ªç¬¬" + n + "é¡µ";
 			buf.append("{total:" + totalNum + ",page:" + n + ",");
 			buf.append(" data:[{\"disid\":\"10" + parentId
 					+ "\",\"disparentId\":\"" + parentId
-					+ "\",\"disname\":\"ºş±±" + page + "\",\"isLeaf\":\"1\"},");
+					+ "\",\"disname\":\"æ¹–åŒ—" + page + "\",\"isLeaf\":\"1\"},");
 			buf.append(" {\"disid\":\"11" + parentId + "\",\"disparentId\":\""
-					+ parentId + "\",\"disname\":\"¹í³Ç¿µ°ÍÊ²" + page
+					+ parentId + "\",\"disname\":\"é¬¼åŸåº·å·´ä»€" + page
 					+ "\",\"isLeaf\":\"0\"},      ");
 			buf.append(" {\"disid\":\"12" + parentId + "\",\"disparentId\":\""
-					+ parentId + "\",\"disname\":\"Ìì½ò" + page
+					+ parentId + "\",\"disname\":\"å¤©æ´¥" + page
 					+ "\",\"isLeaf\":\"1\"}]} ");
 			String jsonStr = buf.toString();
 			response.setContentType("text/html; charset=UTF-8");
-			System.out.println("ÀÁ¼ÓÔØ×Ó´®:" + jsonStr);
+			System.out.println("æ‡’åŠ è½½å­ä¸²:" + jsonStr);
 			PrintWriter out = response.getWriter();
 			out.println(jsonStr);
 		} catch (Exception e) {

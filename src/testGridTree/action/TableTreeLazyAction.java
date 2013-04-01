@@ -1,4 +1,4 @@
-package testGridTree.action;
+ï»¿package testGridTree.action;
 
 import java.io.PrintWriter;
 import java.util.ArrayList;
@@ -13,15 +13,15 @@ import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 
 /**
- * ÀÁ¼ÓÔØ±í¸ñÊ÷ÑİÊ¾:²éÑ¯Ö¸¶¨µÄ¸¸½ÚµãÏÂÃæµÄ×Ó½Úµã.
- * ÔÚµã»÷½ÚµãÇ°ÃæµÄ+ºÅµÄÊ±ºò,½«Ìá½»µ½Õâ¸öaction´¦Àí.
+ * æ‡’åŠ è½½è¡¨æ ¼æ ‘æ¼”ç¤º:æŸ¥è¯¢æŒ‡å®šçš„çˆ¶èŠ‚ç‚¹ä¸‹é¢çš„å­èŠ‚ç‚¹.
+ * åœ¨ç‚¹å‡»èŠ‚ç‚¹å‰é¢çš„+å·çš„æ—¶å€™,å°†æäº¤åˆ°è¿™ä¸ªactionå¤„ç†.
  * connect me:419723443@qq.com
  */
 public class TableTreeLazyAction   extends Action { 
-	 // Ã¿Ò³ĞĞÊı
+	 // æ¯é¡µè¡Œæ•°
     private static int DEFAULT_PAGE_SIZE = 10;
 	/**
-	 * ÀÁ¼ÓÔØµÄ±í¸ñÊ÷Ê¾Àı´úÂë.
+	 * æ‡’åŠ è½½çš„è¡¨æ ¼æ ‘ç¤ºä¾‹ä»£ç .
 	 * @param mapping
 	 * @param form
 	 * @param request
@@ -35,24 +35,24 @@ public class TableTreeLazyAction   extends Action {
 		List list = new ArrayList();		
 		try {
 			/*
-			//²éÑ¯×Ó½Úµã¼¯ºÏ
+			//æŸ¥è¯¢å­èŠ‚ç‚¹é›†åˆ
 			list = dao.getListByParent(parentId);
-			// µ÷ÓÃ¹¤¾ßÀàµÄ·½·¨µÃµ½json×Ö·û´®¡£
+			// è°ƒç”¨å·¥å…·ç±»çš„æ–¹æ³•å¾—åˆ°jsonå­—ç¬¦ä¸²ã€‚
 			String jsonStr = GridTreeUtil.getJsonStr(list);
 			*/
 			StringBuffer buf  =new StringBuffer();
-			String page  ="--ÊÇ"+parentId+"µÄº¢×Ó...";	
+			String page  ="--æ˜¯"+parentId+"çš„å­©å­...";	
 			buf.append("[");
-			buf.append("{\"disid\":\"10"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"º¢×Ó10"+page+"\",\"isLeaf\":\"1\"},");
-			buf.append(" {\"disid\":\"12"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"º¢×Ó12"+page+"\",\"isLeaf\":\"0\"},  ");	
-			buf.append(" {\"disid\":\"13"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"º¢×Ó13"+page+"\",\"isLeaf\":\"0\"}, ");
-			buf.append("{\"disid\":\"14"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"º¢×Ó14"+page+"\",\"isLeaf\":\"1\"},");
-			buf.append(" {\"disid\":\"15"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"º¢×Ó15"+page+"\",\"isLeaf\":\"0\"} ");	
+			buf.append("{\"disid\":\"10"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"å­©å­10"+page+"\",\"isLeaf\":\"1\"},");
+			buf.append(" {\"disid\":\"12"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"å­©å­12"+page+"\",\"isLeaf\":\"0\"},  ");	
+			buf.append(" {\"disid\":\"13"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"å­©å­13"+page+"\",\"isLeaf\":\"0\"}, ");
+			buf.append("{\"disid\":\"14"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"å­©å­14"+page+"\",\"isLeaf\":\"1\"},");
+			buf.append(" {\"disid\":\"15"+parentId+"\",\"disparentId\":\""+parentId+"\",\"disname\":\"å­©å­15"+page+"\",\"isLeaf\":\"0\"} ");	
 			buf.append("]");
 			
 			String jsonStr = buf.toString();
 			response.setContentType("text/html; charset=UTF-8");
-			System.out.println("ÀÁ¼ÓÔØ×Ó´®:"+jsonStr);
+			System.out.println("æ‡’åŠ è½½å­ä¸²:"+jsonStr);
 			PrintWriter out = response.getWriter();
 			out.println(jsonStr);
 		} catch (Exception e) {
